@@ -26,6 +26,10 @@ npm run seo:check  # contrôle title / description / H1 / canonical / JSON-LD su
 - `CONTACT_WEBHOOK_URL` : URL recevant en POST (JSON) les messages du formulaire de contact (Resend, Brevo, Zapier, SMTP relais…). Sans cette variable, les messages sont journalisés côté serveur.
 - Agenda : Acuity Scheduling (`SITE.booking` dans `src/lib/site.ts`), chargé après clic.
 
+## Prévisualisation GitHub Pages
+
+Dépôt : https://github.com/anaselkhadir/robe-elysee. `npm run publish:pages` construit l'export statique (chemin de base `/robe-elysee`, formulaire de contact inactif, images non optimisées) et le pousse sur la branche `gh-pages`, publiée sur https://anaselkhadir.github.io/robe-elysee/.
+
 ## Déploiement
 
 Le site est entièrement pré-rendu (89 pages) ; seule `/api/contact/` est dynamique. Hébergement Node.js (Vercel, o2switch Node, VPS) avec `npm run build && npm start`. Les redirections 301 et les en-têtes de cache des médias sont dans `next.config.ts`.

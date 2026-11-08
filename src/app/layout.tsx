@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
-import { Header } from '@/components/chrome/Header';
+import { Navbar } from '@/components/chrome/Navbar';
 import { Footer } from '@/components/chrome/Footer';
-import { StickyCta } from '@/components/chrome/StickyCta';
 import { Motion } from '@/components/motion/Motion';
 import { SITE } from '@/lib/site';
 import '@/styles/base.css';
@@ -49,10 +48,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#contenu" className="skip-link">
           Aller au contenu
         </a>
-        <Header />
+        <Navbar />
         <main id="contenu">{children}</main>
         <Footer />
-        <StickyCta />
         <Motion />
       </body>
     </html>

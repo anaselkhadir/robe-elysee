@@ -36,7 +36,7 @@ Aucune couleur d'accent, aucune section sombre. La couleur vient des photographi
 - Conteneur 1560 px, gouttière fluide 1.25–4 rem, grille 12 colonnes pour les pages intérieures.
 - Compositions posées, symétrie assumée quand le propos s'y prête (hero centré, propos centré), colonnes 5/7 ou 6/1/5 ailleurs. Aucun décalage décoratif, aucune superposition.
 - Séparation des sections par un filet (`border-top: 1px solid var(--line)`) et de l'espace (`--section` 5.5–10 rem).
-- Rayons : 0. Ombres : aucune. Cartes : aucune (les robes sont image + cartel).
+- Rayons : 0, sauf la barre de navigation flottante (6 px) et ses boutons (4 px). Ombres : aucune. Cartes : aucune (les robes sont image + cartel).
 - Accueil : hero (titre, deux chemins, photographie large) ; propos centré + quatre engagements sur une ligne ; six robes en grille 3 × 2 + liste des styles ; photographie large du showroom + texte ; sur-mesure (image noir et blanc + texte) ; maisons en liste ; déroulé de l'essayage (liste numérotée + photographie) ; qui sommes-nous ; journal (3) ; rendez-vous.
 - Pages intérieures : `PageHero` (split / full / text) puis `Chapters` (gallery, portrait, wide, text selon le nombre d'images), grilles régulières (catalogue 3 colonnes).
 
@@ -50,7 +50,7 @@ Aucune couleur d'accent, aucune section sombre. La couleur vient des photographi
 
 ## Composants
 
-`Header` (compact au défilement, se retire en descendant, fond blanc translucide), `Menu` (plein écran blanc, image par rubrique sur grand écran), `Footer` (blanc, filet, colonnes), `StickyCta` (< 1281 px, blanc bordé), `DressCard` (seconde photo au survol), `Catalogue` (puces texte soulignées = vrais liens, filtrage en place + `?style=&createur=`), `Gallery` (fondu simple), `Acuity` (iframe après clic), `ContactForm` (validation à la perte de focus), `Cta`.
+`Navbar` (barre flottante blanche bordée, rayon 6 px : Menu à gauche, logo centré, bouton rendez-vous à droite ; bandeau défilant des quatre engagements sous la barre ; au clic la barre se déploie vers le bas en panneau avec deux rubriques de liens, une carte rendez-vous et les coordonnées, contenu en cascade, voile flou sur la page), `Footer` (blanc, filet, colonnes), `DressCard` (seconde photo au survol), `Catalogue` (puces texte soulignées = vrais liens, filtrage en place + `?style=&createur=`), `Gallery` (fondu simple), `Acuity` (iframe après clic), `ContactForm` (validation à la perte de focus), `Cta`.
 
 ## Interdits
 

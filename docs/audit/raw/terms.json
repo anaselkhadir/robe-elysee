@@ -1,0 +1,132 @@
+{
+ "createurs": [
+  {
+   "id": 28,
+   "slug": "adore",
+   "name": "Adore",
+   "count": 0,
+   "description": ""
+  },
+  {
+   "id": 24,
+   "slug": "aire-barcelona",
+   "name": "Aire Barcelona",
+   "count": 3,
+   "description": ""
+  },
+  {
+   "id": 26,
+   "slug": "aire-boho",
+   "name": "Aire Boho",
+   "count": 0,
+   "description": ""
+  },
+  {
+   "id": 25,
+   "slug": "aire-royale",
+   "name": "Aire Royale",
+   "count": 2,
+   "description": ""
+  },
+  {
+   "id": 33,
+   "slug": "alberto-palatchi",
+   "name": "Alberto Palatchi",
+   "count": 3,
+   "description": ""
+  },
+  {
+   "id": 32,
+   "slug": "angeola",
+   "name": "Angeola",
+   "count": 0,
+   "description": "Créatrice du Sud-Ouest de la France"
+  },
+  {
+   "id": 13,
+   "slug": "anna-sposa",
+   "name": "Anna Sposa",
+   "count": 0,
+   "description": ""
+  },
+  {
+   "id": 15,
+   "slug": "elizabeth-passion",
+   "name": "Elizabeth Passion",
+   "count": 0,
+   "description": ""
+  },
+  {
+   "id": 16,
+   "slug": "justin-alexander",
+   "name": "Justin Alexander",
+   "count": 5,
+   "description": ""
+  },
+  {
+   "id": 27,
+   "slug": "justin-alexander-group",
+   "name": "Justin Alexander Group",
+   "count": 1,
+   "description": ""
+  },
+  {
+   "id": 29,
+   "slug": "lillian-west",
+   "name": "Lillian West",
+   "count": 3,
+   "description": ""
+  },
+  {
+   "id": 14,
+   "slug": "luce-sposa",
+   "name": "Luce Sposa",
+   "count": 19,
+   "description": ""
+  },
+  {
+   "id": 23,
+   "slug": "rosa-clara",
+   "name": "Rosa Clara Group",
+   "count": 2,
+   "description": ""
+  }
+ ],
+ "styles": [
+  {
+   "id": 7,
+   "slug": "boheme",
+   "name": "Bohème",
+   "count": 4,
+   "description": ""
+  },
+  {
+   "id": 30,
+   "slug": "fluide",
+   "name": "Fluide",
+   "count": 8,
+   "description": ""
+  },
+  {
+   "id": 9,
+   "slug": "minimaliste",
+   "name": "Minimaliste",
+   "count": 8,
+   "description": ""
+  },
+  {
+   "id": 8,
+   "slug": "princesse",
+   "name": "Princesse",
+   "count": 22,
+   "description": ""
+  },
+  {
+   "id": 22,
+   "slug": "sirene",
+   "name": "Sirène",
+   "count": 9,
+   "description": ""
+  }
+ ]
+}

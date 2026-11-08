@@ -1,0 +1,486 @@
+/* ============================================================
+   ROBE ELYSÉE — Design system « Galerie »
+   Blanc · filets fins · EB Garamond (titres) · Jost (interface)
+   ============================================================ */
+
+:root {
+  --white: #fdfcfa;
+  --surface: #f6f4f0;
+  --surface-2: #efece6;
+  --ink: #1f1d1b;
+  --ink-soft: #3a3632;
+  --muted: #6b6661;
+  --faint: #9a948d;
+  --line: rgba(31, 29, 27, 0.12);
+  --line-strong: rgba(31, 29, 27, 0.34);
+
+  --bg: var(--white);
+  --fg: var(--ink);
+
+  --serif: var(--font-display), 'Cormorant Garamond', Garamond, 'Times New Roman', serif;
+  --sans: var(--font-sans), 'Futura', 'Avenir Next', 'Helvetica Neue', Arial, sans-serif;
+
+  --fs-mega: clamp(2.4rem, 4.6vw, 4.4rem);
+  --fs-display: clamp(2rem, 3.4vw, 3.4rem);
+  --fs-h2: clamp(1.7rem, 2.4vw, 2.4rem);
+  --fs-h3: clamp(1.25rem, 1.55vw, 1.5rem);
+  --fs-quote: clamp(1.45rem, 2.2vw, 2.15rem);
+  --fs-lead: clamp(1.1rem, 1.3vw, 1.25rem);
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.7rem;
+  --track-micro: 0.16em;
+  --track-nav: 0.14em;
+
+  --gutter: clamp(1.25rem, 4vw, 4rem);
+  --section: clamp(5.5rem, 11vw, 10rem);
+  --section-sm: clamp(3.5rem, 6vw, 6rem);
+  --max: 1560px;
+  --measure: 38rem;
+  --header-h: 84px;
+  --header-h-compact: 64px;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-1: 0.35s;
+  --dur-2: 0.9s;
+
+  --z-sticky: 40;
+  --z-header: 100;
+  --z-menu: 90;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  background: var(--bg);
+}
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--sans);
+  font-size: var(--fs-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: clip;
+}
+img,
+video,
+iframe,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd,
+address {
+  margin: 0;
+  font-style: normal;
+}
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+::selection {
+  background: var(--ink);
+  color: var(--white);
+}
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 4px;
+}
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1.25rem;
+  background: var(--ink);
+  color: var(--white);
+  font-size: var(--fs-small);
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: none;
+}
+
+/* ---------- Typographie ---------- */
+.serif,
+.t-mega,
+.t-display,
+.t-h2,
+.t-h3,
+.t-quote,
+.t-lead,
+.t-num {
+  font-family: var(--serif);
+  font-weight: 400;
+  text-wrap: balance;
+}
+.t-mega {
+  font-size: var(--fs-mega);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+}
+.t-display {
+  font-size: var(--fs-display);
+  line-height: 1.12;
+}
+.t-h2 {
+  font-size: var(--fs-h2);
+  line-height: 1.18;
+}
+.t-h3 {
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+}
+.t-quote {
+  font-size: var(--fs-quote);
+  line-height: 1.35;
+}
+.t-mega em,
+.t-display em,
+.t-h2 em,
+.t-h3 em,
+.t-quote em {
+  font-style: italic;
+}
+.t-lead {
+  font-size: var(--fs-lead);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  text-wrap: pretty;
+}
+.t-num {
+  font-style: italic;
+  color: var(--muted);
+}
+.t-micro {
+  font-family: var(--sans);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: var(--track-micro);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+.t-small {
+  font-size: var(--fs-small);
+  line-height: 1.65;
+}
+.t-muted {
+  color: var(--muted);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+.prose > * + * {
+  margin-top: 1.1em;
+}
+.prose p,
+.prose li {
+  text-wrap: pretty;
+  color: var(--ink-soft);
+}
+.prose a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: opacity var(--dur-1);
+}
+.prose a:hover {
+  opacity: 0.6;
+}
+.prose strong,
+.prose b {
+  font-weight: 400;
+  color: var(--ink);
+}
+.prose ul {
+  display: grid;
+  gap: 0.6rem;
+}
+.prose ul li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+.prose ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.9em;
+  width: 0.75rem;
+  height: 1px;
+  background: var(--line-strong);
+}
+.prose h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h2);
+  line-height: 1.2;
+  margin-top: 2em;
+  text-wrap: balance;
+}
+.prose h3 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+  margin-top: 1.8em;
+  text-wrap: balance;
+}
+.prose h2 + *,
+.prose h3 + * {
+  margin-top: 0.8em;
+}
+.prose figure {
+  margin-block: 2.5em;
+}
+.prose blockquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: var(--fs-h3);
+  line-height: 1.4;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--line-strong);
+}
+
+/* ---------- Mise en page ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+}
+.section {
+  padding-block: var(--section);
+}
+.section-sm {
+  padding-block: var(--section-sm);
+}
+.rule {
+  border: 0;
+  height: 1px;
+  background: var(--line);
+  margin: 0;
+}
+/* Plus aucune section sombre : les anciennes classes de fond deviennent des surfaces claires */
+.bg-ivory,
+.bg-champagne,
+.bg-night {
+  background: var(--surface);
+  color: var(--fg);
+}
+.kicker {
+  display: block;
+  color: var(--muted);
+}
+
+/* ---------- Boutons et liens ---------- */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 3rem;
+  padding: 0 1.75rem;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  background: transparent;
+  font-family: var(--sans);
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background var(--dur-1) var(--ease-out), color var(--dur-1) var(--ease-out), border-color var(--dur-1);
+}
+.btn:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+.btn--solid {
+  background: var(--ink);
+  color: var(--white);
+}
+.btn--solid:hover {
+  background: var(--ink-soft);
+  border-color: var(--ink-soft);
+}
+.btn--light,
+.btn--light-solid {
+  border-color: var(--ink);
+  color: var(--ink);
+  background: transparent;
+}
+.btn--light:hover,
+.btn--light-solid:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+.btn .arrow {
+  display: none;
+}
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--fs-micro);
+  font-weight: 400;
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  padding-block: 0.4rem;
+  background: linear-gradient(currentColor, currentColor) 0 100% / 100% 1px no-repeat;
+  transition: opacity var(--dur-1);
+}
+.link:hover {
+  opacity: 0.55;
+}
+.link--serif {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* ---------- Médias ---------- */
+.media {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+.media img,
+.media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.media--zoom img {
+  transition: transform 2s var(--ease-out), opacity var(--dur-2);
+}
+a:hover .media--zoom img,
+.media--zoom:hover img {
+  transform: scale(1.025);
+}
+.caption {
+  margin-top: 0.8rem;
+  color: var(--muted);
+}
+
+/* ---------- Révélations : fondus lents uniquement ----------
+   Les éléments restent visibles sans JS ; avec JS ils apparaissent en fondu à l'entrée dans l'écran. */
+html.js [data-reveal],
+html.js .split-lines {
+  opacity: 0;
+  transform: translate3d(0, 0.6rem, 0);
+  transition: opacity 1.4s var(--ease-out), transform 1.6s var(--ease-out);
+  transition-delay: var(--delay, 0s);
+}
+html.js [data-reveal='mask'] {
+  transform: none;
+}
+html.js [data-reveal].is-in,
+html.js .split-lines.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+  html.js [data-reveal],
+  html.js .split-lines {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Petits écrans : les boutons s'étirent et leur libellé peut passer à la ligne */
+@media (max-width: 560px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    line-height: 1.3;
+    padding-block: 0.8rem;
+    max-width: 100%;
+  }
+  .hero__ctas .btn,
+  .cta__actions .btn,
+  .merci__actions .btn,
+  .page-actions .btn,
+  .menu__cta {
+    width: 100%;
+  }
+}
+
+/* Les cellules de grille et les cartes ne débordent jamais de leur colonne */
+.related__grid > li,
+.dress__link,
+.dress__meta,
+.more > li {
+  min-width: 0;
+}
+.dress__name,
+.dress__info {
+  overflow-wrap: anywhere;
+}

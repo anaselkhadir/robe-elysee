@@ -18,7 +18,6 @@ const FEATURED = ['delphi', 'keegan', 'charlotte', 'bianca', 'ornella', 'viona']
 
 export default function Home() {
   const b = page.blocks;
-  const pillars = b.filter((x) => x.type === 'p' && /^(Collection exclusive|Essayages privés|Retouches sur-mesure|Conseils d’expertes)/.test(x.text));
   const showroom = findSection(b, 'Robe de mariée sur-mesure')!;
   const collection = findSection(b, 'De nombreuses robes')!;
   const accompagnement = findSection(b, 'Profitez d’un accompagnement')!;
@@ -37,42 +36,30 @@ export default function Home() {
   return (
     <>
       <JsonLd data={graph(webPage({ path: '/', name: page.title, description: page.description, published: page.datePublished, modified: page.dateModified, crumbs: [{ name: 'Accueil' }] }))} />
-      <Hero h1={page.h1!} />
-
-      {/* ————— Le propos ————— */}
-      <section className="statement" aria-label="Le showroom Robe Elysée">
-        <div className="container statement__inner">
-          <p className="statement__text t-quote split-lines">{showroomP[0]?.text}</p>
-          <ul className="statement__pillars" data-reveal="">
-            {pillars.map((p, i) => (
-              <li key={i} className="t-micro">
-                {'text' in p ? p.text : ''}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <Hero h1={page.h1!} statement={showroomP[0]?.text ?? ''} />
 
       {/* ————— La collection ————— */}
       <section className="collection section" aria-labelledby="collection-title">
-        <div className="container collection__head">
-          <h2 id="collection-title" className="t-display split-lines">
-            {collection.heading?.text}
-          </h2>
-          <div className="collection__intro" data-reveal="">
-            <RichText block={paragraphs(collection.blocks)[0]} className="t-lead" />
-            <Link href="/robes/" className="link">
-              Voir les {DRESSES.length} robes
-            </Link>
+        <div className="container collection__layout">
+          <ul className="collection__grid">
+            {featured.map((d, i) => (
+              <li key={d.slug}>
+                <DressCard dress={d} sizes="(max-width: 700px) 50vw, 24vw" delay={(i % 2) * 0.12} />
+              </li>
+            ))}
+          </ul>
+          <div className="collection__side">
+            <h2 id="collection-title" className="collection__title split-lines">
+              {collection.heading?.text}
+            </h2>
+            <div className="collection__intro" data-reveal="">
+              <RichText block={paragraphs(collection.blocks)[0]} className="collection__lead" />
+              <Link href="/robes/" className="link">
+                Voir les {DRESSES.length} robes
+              </Link>
+            </div>
           </div>
         </div>
-        <ul className="container collection__grid">
-          {featured.map((d, i) => (
-            <li key={d.slug}>
-              <DressCard dress={d} sizes="(max-width: 700px) 50vw, 30vw" delay={(i % 3) * 0.12} />
-            </li>
-          ))}
-        </ul>
         <nav className="container collection__styles" aria-label="Robes par style" data-reveal="">
           <p className="t-micro t-muted">Par style</p>
           <ul>

@@ -8,7 +8,7 @@ import { RDV } from '@/lib/site';
 const SLIDES = ['delphi', 'keegan', 'charlotte', 'bianca', 'alana', 'idonia', 'epine', 'anastasia', 'mathilde', 'viola', 'elena'];
 
 /** Premier écran : un titre posé, deux chemins, et un accordéon automatique des robes à la une. */
-export function Hero({ h1 }: { h1: string }) {
+export function Hero({ h1, statement }: { h1: string; statement: string }) {
   const items: CascadeItem[] = SLIDES.map((slug) => DRESSES.find((d) => d.slug === slug)!)
     .filter(Boolean)
     .map((d) => {
@@ -38,6 +38,12 @@ export function Hero({ h1 }: { h1: string }) {
       </div>
       <div className="hero__media container">
         <CascadeSlider items={items} className="hero__frame" />
+        <div className="hero__aside">
+          <p className="hero__statement">{statement}</p>
+          <Link href="/showroom-robe-de-mariee-toulouse/" className="link">
+            Découvrir le showroom
+          </Link>
+        </div>
       </div>
     </section>
   );

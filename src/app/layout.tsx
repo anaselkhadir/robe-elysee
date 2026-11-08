@@ -23,6 +23,12 @@ const sans = localFont({
   variable: '--font-sans',
   display: 'swap',
 });
+// Inter : phrases d'introduction du hero et de la collection (demande du client)
+const inter = localFont({
+  src: [{ path: '../fonts/inter-variable.woff2', weight: '300 600', style: 'normal' }],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
@@ -39,7 +45,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr-FR" className={`${display.variable} ${sans.variable}`} suppressHydrationWarning>
+    <html lang="fr-FR" className={`${display.variable} ${sans.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         {/* Active les états « avant révélation » uniquement quand le JS est présent : aucun contenu masqué sans JS. */}
         <script dangerouslySetInnerHTML={{ __html: "document.documentElement.classList.add('js')" }} />

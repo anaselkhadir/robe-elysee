@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://www.robedemarieetoulouse.fr/sitemap_index.xml

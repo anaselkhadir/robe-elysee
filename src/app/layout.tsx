@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   applicationName: SITE.siteName,
   formatDetection: { telephone: false },
-  icons: { icon: '/favicon.svg', apple: '/brand/mark.png' },
+  icons: { icon: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/favicon.svg`, apple: `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/brand/mark.png` },
 };
 
 export const viewport: Viewport = {

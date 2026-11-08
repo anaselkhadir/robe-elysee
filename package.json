@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start -p 5800",
     "import": "node scripts/import-wp.mjs",
-    "seo:check": "node scripts/seo-check.mjs"
+    "seo:check": "node scripts/seo-check.mjs",
+    "export:pages": "node scripts/export-pages.mjs",
+    "publish:pages": "node scripts/publish-pages.mjs"
   },
   "dependencies": {
     "gsap": "^3.15.1",

@@ -1,6 +1,8 @@
 node_modules
 .next
 .next-build
+.next-export
+.api-parked
 out
 .DS_Store
 *.tsbuildinfo

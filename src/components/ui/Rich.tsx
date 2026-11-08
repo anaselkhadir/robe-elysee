@@ -8,7 +8,10 @@ import { RDV } from '@/lib/site';
 export function RichText({ block, className }: { block: Extract<Block, { text: string }>; className?: string }) {
   const Tag = (block.type === 'li' ? 'li' : block.type === 'blockquote' ? 'blockquote' : block.type) as 'p';
   if ('html' in block && block.html) {
-    return <Tag className={className} dangerouslySetInnerHTML={{ __html: block.html }} />;
+    // liens internes du contenu WordPress : préfixés du chemin de base (export GitHub Pages)
+    const base = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+    const html = base ? block.html.replace(/href="\/(?!\/)/g, `href="${base}/`) : block.html;
+    return <Tag className={className} dangerouslySetInnerHTML={{ __html: html }} />;
   }
   return <Tag className={className}>{block.text}</Tag>;
 }

@@ -37,7 +37,7 @@ Aucune couleur d'accent, aucune section sombre. La couleur vient des photographi
 - Compositions posées, symétrie assumée quand le propos s'y prête (hero centré, propos centré), colonnes 5/7 ou 6/1/5 ailleurs. Aucun décalage décoratif, aucune superposition.
 - Séparation des sections par un filet (`border-top: 1px solid var(--line)`) et de l'espace (`--section` 5.5–10 rem).
 - Rayons : 0, sauf la barre de navigation flottante (6 px) et ses boutons (4 px). Ombres : aucune. Cartes : aucune (les robes sont image + cartel).
-- Accueil : hero (titre, deux chemins, photographie large) ; propos centré + quatre engagements sur une ligne ; six robes en grille 3 × 2 + liste des styles ; photographie large du showroom + texte ; sur-mesure (image noir et blanc + texte) ; maisons en liste ; déroulé de l'essayage (liste numérotée + photographie) ; qui sommes-nous ; journal (3) ; rendez-vous.
+- Accueil : hero (titre à mot tournant, deux chemins, accordéon en cascade de onze robes en portrait, cadre 5:2 dont la hauteur remplit l'écran restant : la robe active au centre avec son nom en bas, les autres en bandes verticales décroissantes ; animation automatique toutes les 3,4 s, sans clic ni survol, figée en mouvement réduit) ; propos centré + quatre engagements sur une ligne ; six robes en grille 3 × 2 + liste des styles ; photographie large du showroom + texte ; sur-mesure (image noir et blanc + texte) ; maisons en liste ; déroulé de l'essayage (liste numérotée + photographie) ; qui sommes-nous ; journal (3) ; rendez-vous.
 - Pages intérieures : `PageHero` (split / full / text) puis `Chapters` (gallery, portrait, wide, text selon le nombre d'images), grilles régulières (catalogue 3 colonnes).
 
 ## Mouvement
@@ -45,8 +45,8 @@ Aucune couleur d'accent, aucune section sombre. La couleur vient des photographi
 - Lenis (défilement adouci, coupé en mouvement réduit).
 - Une seule révélation : fondu lent (1.4 s, 0.6 rem de translation) à l'entrée dans l'écran, pour `[data-reveal]` et `.split-lines` (`components/motion/Motion.tsx`, IntersectionObserver + MutationObserver pour le contenu diffusé en flux, re-vérification différée).
 - Survols : opacité 0.55, zoom d'image 1.025 en 2 s. Aucun italique au survol, aucun déplacement.
-- Hero : entrée en fondu CSS (`@keyframes hero-in`), sans JavaScript.
-- Pas de WebGL, pas d'épinglage, pas de défilement horizontal, pas de bandeau défilant.
+- Hero : entrée en fondu CSS (`@keyframes hero-in`), sans JavaScript ; mot tournant « d’une » / « de votre » en italique (`RotatingWord`), le titre tient sur deux lignes : le mot sort vers le haut, le suivant monte lettre par lettre, la largeur s'ajuste pour recomposer la ligne, toutes les 2,6 s ; figé en mouvement réduit.
+- Pas de WebGL, pas d'épinglage, pas de défilement horizontal. Un seul bandeau défilant : les quatre engagements sous la barre de navigation.
 
 ## Composants
 

@@ -1,9 +1,21 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import { CascadeSlider, type CascadeItem } from './CascadeSlider';
+import { RotatingWord } from './RotatingWord';
+import { DRESSES, createurName, dressImages, primaryCreateur } from '@/lib/data';
 import { RDV } from '@/lib/site';
 
-/** Premier écran : un titre posé, deux chemins, une photographie large. Entrée en fondu, rien d'autre. */
+// Robes du carrousel d'accueil (photographies portrait 2:3), dans l'ordre d'apparition
+const SLIDES = ['delphi', 'keegan', 'charlotte', 'bianca', 'alana', 'idonia', 'epine', 'anastasia', 'mathilde', 'viola', 'elena'];
+
+/** Premier écran : un titre posé, deux chemins, et un accordéon automatique des robes à la une. */
 export function Hero({ h1 }: { h1: string }) {
+  const items: CascadeItem[] = SLIDES.map((slug) => DRESSES.find((d) => d.slug === slug)!)
+    .filter(Boolean)
+    .map((d) => {
+      const img = dressImages(d).find((i) => i.h > i.w * 1.3) ?? dressImages(d)[0];
+      return { src: img.src, alt: img.alt, name: d.name, maison: createurName(primaryCreateur(d)) };
+    });
+
   return (
     <section className="hero" aria-labelledby="hero-title">
       <div className="container hero__head">
@@ -13,9 +25,7 @@ export function Hero({ h1 }: { h1: string }) {
           <span className="hero__h1-text">{h1}</span>
         </h1>
         <p className="hero__title t-mega">
-          Le début d’une histoire.
-          <br />
-          <em>La vôtre.</em>
+          Le début <RotatingWord words={['d’une', { text: 'de votre', italic: true }]} /> histoire.
         </p>
         <div className="hero__ctas">
           <Link href="/robes/" className="btn">
@@ -26,21 +36,9 @@ export function Hero({ h1 }: { h1: string }) {
           </Link>
         </div>
       </div>
-      <figure className="hero__media container">
-        <span className="media hero__frame">
-          <Image
-            src="/wp-content/uploads/2025/09/hero-robes.jpg"
-            alt="Mariée en robe de tulle plissé assise dans le salon d’essayage du showroom Robe Elysée à Toulouse"
-            width={1920}
-            height={1281}
-            priority
-            fetchPriority="high"
-            sizes="(max-width: 900px) 100vw, 92vw"
-            quality={80}
-          />
-        </span>
-        <figcaption className="caption t-micro">Le salon d’essayage, rue Croix Baragnon</figcaption>
-      </figure>
+      <div className="hero__media container">
+        <CascadeSlider items={items} className="hero__frame" />
+      </div>
     </section>
   );
 }

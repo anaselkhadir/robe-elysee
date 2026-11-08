@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
-import { NAV, RDV } from '@/lib/site';
+import { RDV } from '@/lib/site';
 import { Wordmark } from './Wordmark';
 import { Menu } from './Menu';
 
@@ -37,47 +37,34 @@ export function Header() {
 
   useEffect(() => setOpen(false), [pathname]);
 
-  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
-
   return (
     <>
       <header className="header" data-scrolled={scrolled || undefined} data-hidden={(hidden && !open) || undefined} data-menu={open || undefined}>
         <div className="header__inner">
+          <button
+            type="button"
+            className="burger"
+            aria-expanded={open}
+            aria-controls="menu"
+            aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
+            onClick={() => setOpen((o) => !o)}
+          >
+            <span className="burger__lines" aria-hidden="true">
+              <i />
+              <i />
+            </span>
+            <span className="burger__label t-micro">{open ? 'Fermer' : 'Menu'}</span>
+          </button>
+
           <Link href="/" className="header__logo" aria-label="Robe Elysée, accueil">
             <Wordmark compact={scrolled} />
           </Link>
-
-          <nav className="nav" aria-label="Navigation principale">
-            <ul>
-              {NAV.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href} className="nav__link" aria-current={isActive(item.href) ? 'page' : undefined}>
-                    <span data-text={item.label}>{item.label}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
 
           <div className="header__actions">
             <Link href={RDV} className="header__cta">
               <span className="header__cta-long">Rendez-vous privé</span>
               <span className="header__cta-short">Rendez-vous</span>
             </Link>
-            <button
-              type="button"
-              className="burger"
-              aria-expanded={open}
-              aria-controls="menu"
-              aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}
-              onClick={() => setOpen((o) => !o)}
-            >
-              <span className="burger__label t-micro">{open ? 'Fermer' : 'Menu'}</span>
-              <span className="burger__lines" aria-hidden="true">
-                <i />
-                <i />
-              </span>
-            </button>
           </div>
         </div>
       </header>

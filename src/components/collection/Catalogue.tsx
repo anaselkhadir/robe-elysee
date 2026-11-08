@@ -39,7 +39,7 @@ export function Catalogue({ dresses, styles, createurs, fixed }: Props) {
     if (style) q.set('style', style);
     if (createur) q.set('createur', createur);
     const qs = q.toString();
-    const url = `/robes/${qs ? `?${qs}` : ''}`;
+    const url = `${process.env.NEXT_PUBLIC_BASE_PATH ?? ''}/robes/${qs ? `?${qs}` : ''}`;
     if (location.pathname + location.search !== url) history.replaceState(null, '', url);
   }, [style, createur, fixed, ready]);
 
